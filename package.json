@@ -1,0 +1,30 @@
+{
+  "name": "apifood",
+  "version": "1.0.0",
+  "description": "Api in nodeJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LyonSoaresSantos/apiFood.git"
+  },
+  "author": "LyonSoares",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LyonSoaresSantos/apiFood/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "md5": "^2.2.1",
+    "pm2": "^5.2.0"
+  },
+  "devDependencies": {
+    "nodemon":"2.0.15"
+  },
+  "homepage": "https://github.com/LyonSoaresSantos/apiFood#readme"
+}
