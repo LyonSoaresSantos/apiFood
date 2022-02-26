@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const variables = require('../bin/configuration/variables');
+const variables = require('./configuration/variables');
 
 //routers
 
