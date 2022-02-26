@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const db = require('../configuration/db');
 const bcrypt = require("bcrypt");
 const auth = require('../middlewares/auth');
 
@@ -46,12 +46,15 @@ async function register(params, callback) {
     }
 
     const data = await db.select().from('users').where({ email: params.email })
+    console.log('to aqui1')
     if (data.length >= 1) {
-        return callback({
-            message: "Email already exist!",
-        });
+        message = "Email already exist!"
+        return callback(
+            message
+        );
     } else {
-        [params.email, params.name, params.password, params.passwordconfirmation, params.imagepath, params.address, params.county]
+        console.log('foi de ralo')
+        // [params.email, params.name, params.password, params.passwordconfirmation, params.imagepath, params.address, params.county]
         const salt = bcrypt.genSaltSync();
         const [id] = await db('users').insert({
             email: params.email,
@@ -62,9 +65,9 @@ async function register(params, callback) {
             county: params.county
         })
             .returning('id');
-        const resultado = await db.select().from('users').where({ id: id }).first();;
+        // const resultado = await db.select().from('users').where({ id: id }).first();;
 
-        return callback(null, resultado);
+        return callback(null);
     }
 }
 

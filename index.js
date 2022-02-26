@@ -7,6 +7,9 @@ const auth = require('./middlewares/auth');
 const errors = require('./middlewares/errors');
 const unless = require("express-unless");
 
+//import routes
+const userRoutes = require('./routes/user.routes');
+
 
 //Creating and Invoking Api/Server Web from Express
 const app = express();
@@ -23,12 +26,13 @@ auth.authenticateToken.unless = unless;
 app.use(
     auth.authenticateToken.unless({
         path: [
-
+            { url: "/api/user/register", methods: ['POST'] },
+            { url: "/api/user/login", methods: ['POST'] },
         ],
     })
 )
 
-
 //config of routes
+app.use('/api/user', userRoutes);
 
 module.exports = app;
