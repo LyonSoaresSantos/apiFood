@@ -58,6 +58,7 @@ async function register(params, callback) {
         });
         
     } else {
+        console.log(params)
         const salt = bcrypt.genSaltSync();
         const [id] = await db('users').insert({
             email: params.email,
@@ -68,7 +69,7 @@ async function register(params, callback) {
             county: params.county
         })
             .returning('id');
-        const resultado = await db.select().from('users').where(id).first();;
+        const resultado = await db.select('id').from('users').where(id).first();;
 
         return callback(null, resultado);
     }

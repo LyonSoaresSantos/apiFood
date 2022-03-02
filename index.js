@@ -9,6 +9,7 @@ const unless = require("express-unless");
 
 //import routes
 const userRoutes = require('./routes/user.routes');
+const productRoutes = require('./routes/product.routes');
 
 
 //Creating and Invoking Api/Server Web from Express
@@ -17,9 +18,6 @@ app.use(express.json());
 app.use(cors());
 app.use(errors.errorHandler);
 
-//parse of Json config
-// app.use(bodyParser.json({ limit: '10mb' }));
-// app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 
 //config of unless
 auth.authenticateToken.unless = unless;
@@ -28,11 +26,15 @@ app.use(
         path: [
             { url: "/api/user/register", methods: ['POST'] },
             { url: "/api/user/login", methods: ['POST'] },
+            // { url: "/api/product/register", methods: ['POST'] },
+            // { url: "/api/product/", methods: ['GET'] },
+            // { url: "/api/product/:id", methods: ['GET'] },
         ],
     })
 )
 
 //config of routes
 app.use('/api/user', userRoutes);
+app.use('/api/product', productRoutes);
 
 module.exports = app;
